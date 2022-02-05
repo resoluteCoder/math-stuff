@@ -2,32 +2,65 @@ import React, { useState } from "react";
 import "./App.css";
 import Equation from "./Equation";
 import ScoreTracker from "./ScoreTracker";
+import Results from "./Results";
 import { randNumberFrom } from "./utils";
 
-function App() {
-  const equations = [
-    {
-      id: 1,
-      first: randNumberFrom(0, 10),
-      second: randNumberFrom(0, 10),
-      operator: "+",
-    },
-    {
-      id: 2,
-      first: randNumberFrom(0, 10),
-      second: randNumberFrom(0, 10),
-      operator: "+",
-    },
-  ];
+const equations = [...Array(5)].map((_, index) => ({
+  id: index + 1,
+  first: randNumberFrom(0, 10),
+  second: randNumberFrom(0, 10),
+  operator: "+",
+}));
 
+function App() {
+  const [isFinished, setIsFinished] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [eq, setEq] = useState(equations[0]);
   const [score, setScore] = useState(
     equations.map(({ id }) => ({ id, status: "" }))
   );
 
+  const handleTrackScore = (isCorrect, answer) => {
+    console.log(answer);
+    setScore(
+      score.map((s) => {
+        if (s.id === eq.id) {
+          if (isCorrect) {
+            return { ...s, status: "correct", answer };
+          } else {
+            return { ...s, status: "incorrect", answer };
+          }
+        }
+        return s;
+      })
+    );
+  };
+
+  const handleNextEquation = () => {
+    if (index + 1 === equations.length) {
+      setIsFinished(true);
+    }
+    const newIndex = index + 1;
+    setIndex(newIndex);
+    setEq(equations[newIndex]);
+  };
+
   return (
     <div className="App">
-      <ScoreTracker score={score} />
-      <Equation equations={equations} setScore={setScore} />
+      {isFinished ? (
+        <Results equations={equations} score={score}>
+          djfk
+        </Results>
+      ) : (
+        <>
+          <ScoreTracker score={score} />
+          <Equation
+            eq={eq}
+            handleTrackScore={handleTrackScore}
+            handleNextEquation={handleNextEquation}
+          />
+        </>
+      )}
     </div>
   );
 }

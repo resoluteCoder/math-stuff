@@ -1,6 +1,7 @@
 html,
 body {
   background-color: #282c34;
+  color: white;
 }
 
 .App {
@@ -25,7 +26,6 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -72,4 +72,12 @@ form {
 
 .incorrect {
   background: orangered;
+}
+
+.correct-text {
+  color: lightgreen;
+}
+
+.incorrect-text {
+  color: orangered;
 }

@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Equation from "./Equation";
+import ScoreTracker from "./ScoreTracker";
+import { randNumberFrom } from "./utils";
 
 function App() {
+  const equations = [
+    {
+      id: 1,
+      first: randNumberFrom(0, 10),
+      second: randNumberFrom(0, 10),
+      operator: "+",
+    },
+    {
+      id: 2,
+      first: randNumberFrom(0, 10),
+      second: randNumberFrom(0, 10),
+      operator: "+",
+    },
+  ];
+
+  const [score, setScore] = useState(
+    equations.map(({ id }) => ({ id, status: "" }))
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ScoreTracker score={score} />
+      <Equation equations={equations} setScore={setScore} />
     </div>
   );
 }

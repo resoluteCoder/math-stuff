@@ -1,3 +1,8 @@
+html,
+body {
+  background-color: #282c34;
+}
+
 .App {
   text-align: center;
 }
@@ -13,9 +18,8 @@
   }
 }
 
-.App-header {
+.equation {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,11 +32,44 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.answer-input {
+  background: inherit;
+  border: none;
+  border-bottom: 1px solid white;
+  margin-left: 25px;
+  color: white;
+  font-size: 50px;
+  width: 150px;
+  text-align: center;
+}
+
+.answer-input:focus,
+.answer-input:focus-visible {
+  outline: none;
+}
+
+form {
+  display: inline;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  margin: 100px auto;
+}
+
+.circle {
+  border: 2px solid white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.correct {
+  background: lightgreen;
+}
+
+.incorrect {
+  background: orangered;
 }

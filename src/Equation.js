@@ -35,11 +35,16 @@ const Equation = ({ eq, handleTrackScore, handleNextEquation }) => {
       ) : (
         <h1>You can do it!</h1>
       )}
-      <h1>
-        {`${first} ${operator} ${second}`}
+      <h1 className="vertical-container">
+        <span>{first}</span>
+        <span>{operator}</span>
+        <span>{second}</span>
         <form onSubmit={handleAnswerSubmit}>
           <input
-            onChange={(e) => setAnswer(e.target.value)}
+            onChange={
+              (e) => setAnswer(e.target.value)
+              //setAnswer(e.target.value.split("").reverse().join(""))
+            }
             name="answer"
             className="answer-input"
             maxLength={String(first + second).length}

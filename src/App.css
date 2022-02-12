@@ -81,3 +81,20 @@ form {
 .incorrect-text {
   color: orangered;
 }
+
+.vertical-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.vertical-container span:first-child {
+  grid-column: 2/-1;
+}
+
+.vertical-container form {
+  grid-column: 1/-1;
+}
+
+.vertical-container form input {
+  text-align: right;
+}

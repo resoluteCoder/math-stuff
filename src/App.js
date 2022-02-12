@@ -7,8 +7,8 @@ import { randNumberFrom } from "./utils";
 
 const equations = [...Array(5)].map((_, index) => ({
   id: index + 1,
-  first: randNumberFrom(0, 10),
-  second: randNumberFrom(0, 10),
+  first: randNumberFrom(10, 100),
+  second: randNumberFrom(10, 100),
   operator: "+",
 }));
 
